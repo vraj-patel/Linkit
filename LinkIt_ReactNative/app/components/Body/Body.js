@@ -3,12 +3,16 @@ import {StyleSheet, View, Text, TextInput, Image, ScrollView} from 'react-native
 
 import LinkGroupCards from '../LinkGroupCards/LinkGroupCards';
 
+import { SearchBar } from 'react-native-elements';
+
 export default class Body extends Component {
     render() {
         return(
             <View style={styles.container}>
                     <View style={styles.searchBar}>
-
+                        <SearchBar 
+                            lightTheme={true}
+                        />
                     </View>
 
                     <View style={styles.functionButtons}>
@@ -42,7 +46,7 @@ const styles = StyleSheet.create({
     },
     searchBar: {
         flex: 1,
-        backgroundColor: 'black'
+        //backgroundColor: 'red'
     }, 
     functionButtons: {
         flex: 1,
