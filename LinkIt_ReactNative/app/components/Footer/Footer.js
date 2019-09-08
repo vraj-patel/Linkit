@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         //backgroundColor: 'yellow',
         marginHorizontal: 50,
-        height: '30%'
+        height: '40%'
     },
     footerButton: {
         flex: 1,

@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     headerContent:{
         flexDirection: 'row',
         //backgroundColor: 'purple',
-        height: '50%',
-        top: '10%'
+        //height: '50%',
+        //top: '5%'
     },
     title: {
         fontFamily: 'arial',

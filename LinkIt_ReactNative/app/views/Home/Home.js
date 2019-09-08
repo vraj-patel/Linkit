@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {StyleSheet, View, Text, TextInput, Image} from 'react-native';
+import React, {Component, Fragment} from 'react';
+import {StyleSheet, View, Text, TextInput, Image, SafeAreaView} from 'react-native';
 
 import Header from '../../components/Header/Header';
 import Body from '../../components/Body/Body';
@@ -8,7 +8,9 @@ import Footer from '../../components/Footer/Footer';
 export default class Home extends Component {
     render() {
         return(
-            <View style={styles.container}>
+            <Fragment>
+                <SafeAreaView style={{ flex:0, backgroundColor: '#e74c3c' }} />
+                <SafeAreaView style={styles.container}>
                 <View style={styles.header}>
                 <Header />
                 </View>
@@ -20,7 +22,10 @@ export default class Home extends Component {
                 <View style={styles.footer}>
                 <Footer />
                 </View>
-            </View>
+                </SafeAreaView>
+                <SafeAreaView style={{ flex:0, backgroundColor: '#e74c3c' }} />
+            </Fragment>
+            
         );
     }
 }
@@ -31,15 +36,15 @@ const styles = StyleSheet.create({
         //backgroundColor: 'pink',
     },
     header: {
-        flex: 1,
+        flex: 2,
         backgroundColor: '#e74c3c'
     },
     body: {
-        flex: 7,
+        flex: 31,
         backgroundColor: 'white'
     },
     footer: {
-        flex: 1,
+        flex: 3,
         backgroundColor: '#e74c3c'
     }
    

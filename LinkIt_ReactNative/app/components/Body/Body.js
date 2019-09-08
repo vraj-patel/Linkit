@@ -15,10 +15,6 @@ export default class Body extends Component {
                         />
                     </View>
 
-                    <View style={styles.functionButtons}>
-                        
-                    </View>
-
                     <View style={styles.cardSection}>
                         <View style={styles.cardsContainer}>
                         <LinkGroupCards />
@@ -48,10 +44,6 @@ const styles = StyleSheet.create({
         flex: 1,
         //backgroundColor: 'red'
     }, 
-    functionButtons: {
-        flex: 1,
-        backgroundColor: 'gray'
-    },
     cardSection: {
         flex: 10,
         //backgroundColor: 'white'
