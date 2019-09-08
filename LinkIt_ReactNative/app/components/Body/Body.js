@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text, TextInput, Image, ScrollView} from 'react-native';
 
 import LinkGroupCards from '../LinkGroupCards/LinkGroupCards';
+import LinkCards from '../LinkCards/LinkCards';
 
 import { SearchBar } from 'react-native-elements';
 
@@ -17,7 +18,8 @@ export default class Body extends Component {
 
                     <View style={styles.cardSection}>
                         <View style={styles.cardsContainer}>
-                        <LinkGroupCards />
+                        {/* <LinkGroupCards /> */}
+                        <LinkCards />
                         </View>
                         
                     </View>
