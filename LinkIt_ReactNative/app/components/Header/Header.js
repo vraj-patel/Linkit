@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {StyleSheet, View, Text, TextInput, Image} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View, Text, TextInput, Image } from 'react-native';
 
 import HeaderIcons from './HeaderIcons';
 export default class Header extends Component {
@@ -9,22 +9,25 @@ export default class Header extends Component {
             <View style={styles.container}>
                 <View style={styles.headerContent}>
 
-                   <View style={styles.leftContent}>
-                       {/* CONDITIONAL RENDERING OF BACK ICON */}
-                   </View>
-                    
-                   <View style={styles.centerContent}>
-                    <Text style={styles.title}>Home</Text>
-                   </View>
+                    <View style={styles.leftContent}>
+                        <Image
+                            style={styles.leftIcon}
+                            source={require('../../assets/images/leftIcon2.png')}
+                        />
+                    </View>
 
-                   <View style={styles.rightContent}>
-                    <HeaderIcons />
-                   </View>
+                    <View style={styles.centerContent}>
+                        <Text style={styles.title}>Groups</Text>
+                    </View>
+
+                    <View style={styles.rightContent}>
+                        {/* <HeaderIcons /> */}
+                    </View>
 
                 </View>
-                
+
             </View>
-            
+
         );
     }
 }
@@ -33,7 +36,7 @@ const styles = StyleSheet.create({
     container: {
         height: '100%',
     },
-    headerContent:{
+    headerContent: {
         flexDirection: 'row',
         //backgroundColor: 'purple',
         //height: '50%',
@@ -47,7 +50,9 @@ const styles = StyleSheet.create({
     },
     leftContent: {
         //backgroundColor: 'blue',
-        flex: 1
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'flex-start',
     },
     centerContent: {
         //backgroundColor: 'green',
@@ -56,7 +61,11 @@ const styles = StyleSheet.create({
     rightContent: {
         //backgroundColor: 'yellow',
         flex: 1
-        
     },
+    leftIcon: {
+        width: 20,
+        height: 20,
+        marginLeft: 15
+    }
 
 });

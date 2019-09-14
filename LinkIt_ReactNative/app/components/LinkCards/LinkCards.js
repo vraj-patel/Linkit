@@ -10,6 +10,11 @@ export default class LinkCards extends Component {
                 <LinkCard />
                 <LinkCard />
                 <LinkCard />
+                <LinkCard />
+                <LinkCard />
+                <LinkCard />
+                <LinkCard />
+                <LinkCard />
 
             </ScrollView>
         );
