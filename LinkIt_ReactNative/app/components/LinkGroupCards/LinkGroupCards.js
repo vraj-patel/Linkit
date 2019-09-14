@@ -11,6 +11,7 @@ export default class LinkGroupCards extends Component {
                 <LinkGroupCard />
                 <LinkGroupCard />
                 <LinkGroupCard />
+                <LinkGroupCard />
             </ScrollView>
         );
     }

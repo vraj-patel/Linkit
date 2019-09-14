@@ -4,6 +4,8 @@ import { StyleSheet, View, Text, TextInput, Image, SafeAreaView } from 'react-na
 import Header from '../../components/Header/Header';
 import Body from '../../components/Body/Body';
 import Footer from '../../components/Footer/Footer';
+import NewLinkForm from '../../components/NewLinkForm';
+import NewLinkGroupForm from '../../components/NewLinkGroupForm';
 
 export default class Home extends Component {
     render() {
@@ -17,6 +19,7 @@ export default class Home extends Component {
 
                     <View style={styles.body}>
                         <Body />
+                        <NewLinkGroupForm />
                     </View>
 
                     <View style={styles.footer}>

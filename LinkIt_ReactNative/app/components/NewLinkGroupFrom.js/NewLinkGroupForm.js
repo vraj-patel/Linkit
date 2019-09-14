@@ -3,6 +3,8 @@ import {StyleSheet, View, Text, TextInput, Image, Modal, Dimensions} from 'react
 
 import { Input, Button } from 'react-native-elements';
 
+import ColourPicker from './ColourPicker';
+
 export default class LoginForm extends Component {
     render() {
         return (
@@ -15,23 +17,18 @@ export default class LoginForm extends Component {
                         <View style={styles.topContent}>
                             <Input 
                                 containerStyle={styles.linkNameInput}
-                                placeholder='Link Name'
-                                label='Enter Link Name'
-                            />
-                            <Input 
-                                containerStyle={styles.linkInput}
-                                placeholder='Link'
-                                label="Paste Your Link"
+                                placeholder='Group Name'
+                                label='Enter Group Name'
                             />
 
-                            <Text style={styles.hintText}>Hint: To copy link, press the copy icon within the link card. To open, press link name.</Text>
+                            <ColourPicker />
                         </View>
                         <View style={styles.bottomContent}>
                         
                             <Button 
                                 buttonStyle={styles.button}
                                 containerStyle={styles.buttonContainer}
-                                title= 'Add Link'
+                                title= 'Add Group'
                             />
 
                             <Button 
