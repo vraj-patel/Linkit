@@ -19,9 +19,13 @@ export default class LoginForm extends Component {
                                 containerStyle={styles.linkNameInput}
                                 placeholder='Group Name'
                                 label='Enter Group Name'
+                                labelStyle={{color: 'gray'}}
                             />
-
-                            <ColourPicker />
+                            <View style={styles.colourPickerContainer}>
+                                <Text style={styles.chooseColorText}>Choose Group Colour</Text>
+                                <ColourPicker />
+                            </View>
+                            
                         </View>
                         <View style={styles.bottomContent}>
                         
@@ -64,13 +68,13 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     topContent: {
-        flex: 1,
+        flex: 3,
         //backgroundColor: 'black'
     },
     bottomContent: {
         flex: 1,
         justifyContent: 'flex-end',
-        bottom: 10
+        bottom: 10,
         //backgroundColor: 'red'
     },
     linkNameInput: {
@@ -82,10 +86,14 @@ const styles = StyleSheet.create({
         
         //backgroundColor: 'pink'
     },
-    hintText: {
+    chooseColorText: {
         top: '10%',
         marginLeft: 10,
-        marginRight: 10
+        marginRight: 10,
+        marginBottom: 10,
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'gray'
     },
     button: {
         backgroundColor: 'gray',
@@ -94,6 +102,9 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginLeft: 10,
         marginRight: 10
+    },
+    colourPickerContainer: {
+        top: 30
     }
     
 });

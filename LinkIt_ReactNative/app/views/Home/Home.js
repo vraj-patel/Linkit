@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 import Body from '../../components/Body/Body';
 import Footer from '../../components/Footer/Footer';
 import NewLinkForm from '../../components/NewLinkForm';
-import NewLinkGroupForm from '../../components/NewLinkGroupForm';
+import NewLinkGroupForm from '../../components/NewLinkGroupForm/NewLinkGroupForm';
 
 export default class Home extends Component {
     render() {
