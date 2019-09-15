@@ -15,11 +15,15 @@ export default class Home extends Component {
                 <SafeAreaView style={styles.container}>
                     <View style={styles.header}>
                         <Header />
+                        {/* Pass in:
+                            areLinksDisplayed: for the left icon in header
+                            title: should either "Groups" or group name as title
+                        */}
                     </View>
 
                     <View style={styles.body}>
                         <Body />
-                        <NewLinkGroupForm />
+                        {/* <NewLinkGroupForm /> */}
                     </View>
 
                     <View style={styles.footer}>

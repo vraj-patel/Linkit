@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     },
     scrollContainer: {
         flex: 1,
-        flexGrow: 1,
+        //flexGrow: 1,
         margin: 10,
         //backgroundColor: 'red',
     },

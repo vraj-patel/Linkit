@@ -8,10 +8,7 @@ export default class LinkGroupCards extends Component {
         return(
             <ScrollView  style={styles.container} showsVerticalScrollIndicator={false}>
                 <LinkGroupCard />
-                <LinkGroupCard />
-                <LinkGroupCard />
-                <LinkGroupCard />
-                <LinkGroupCard />
+                
             </ScrollView>
         );
     }

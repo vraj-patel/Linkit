@@ -7,28 +7,19 @@
  */
 
 import React, {Fragment} from 'react';
-import Home from './app/views/Home/Home';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {Provider} from 'react-redux';
+import Home from './src/views/Home/Home';
+import store from './src/store';
 
 
 const App = () => {
   return (
-    <Home />
+    <Provider store={store}>
+      <Home />
+    </Provider>
   );
 };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-});
+
 
 export default App;
