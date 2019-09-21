@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
-
+import { connect } from 'react-redux';
 import HeaderIcons from './HeaderIcons';
-export default class Header extends Component {
+
+class Header extends Component {
 
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.headerContent}>
-                    <TouchableOpacity style={styles.leftContent}>
+                    <TouchableOpacity 
+                        style={styles.leftContent}
+                        disabled={this.props.groupCardsDisplayed}
+                    >
                         <Image
                             style={styles.leftIcon}
                             source={require('../../assets/images/leftIcon2.png')}
+                            
                         />
                     </TouchableOpacity>
 
@@ -68,3 +73,11 @@ const styles = StyleSheet.create({
     }
 
 });
+
+function mapStateToProps(state) {
+    return {
+        groupCardsDisplayed: state.currBodyInfoReducer.groupCardsDisplayed
+    }
+}
+
+export default connect(mapStateToProps)(Header);
