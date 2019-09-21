@@ -18,8 +18,8 @@ export default class Body extends Component {
 
                 <View style={styles.cardSection}>
                     <View style={styles.cardsContainer}>
-                        <LinkGroupCards />
-                        {/* <LinkCards /> */}
+                        {/* <LinkGroupCards /> */}
+                        <LinkCards />
                     </View>
                 </View>
 

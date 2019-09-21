@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, TextInput, Image} from 'react-native';
+import {StyleSheet, View, Text, TextInput, Image, TouchableOpacity} from 'react-native';
 
 
 export default class LinkGroupCard extends Component {
     render() {
         return(
+            <TouchableOpacity>
             <View style={styles.container}>
-
                 <View style={styles.leftContent}>
                     <Text style={styles.title}>Some Group Name</Text>
                 </View>
@@ -18,6 +18,8 @@ export default class LinkGroupCard extends Component {
                     />
                 </View>
             </View>
+            </TouchableOpacity>
+            
         );
     }
 }

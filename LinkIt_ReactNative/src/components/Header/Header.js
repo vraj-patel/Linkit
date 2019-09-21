@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TextInput, Image } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 
 import HeaderIcons from './HeaderIcons';
 export default class Header extends Component {
@@ -8,13 +8,12 @@ export default class Header extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.headerContent}>
-
-                    <View style={styles.leftContent}>
+                    <TouchableOpacity style={styles.leftContent}>
                         <Image
                             style={styles.leftIcon}
                             source={require('../../assets/images/leftIcon2.png')}
                         />
-                    </View>
+                    </TouchableOpacity>
 
                     <View style={styles.centerContent}>
                         <Text style={styles.title}>Groups</Text>
