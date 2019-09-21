@@ -1,6 +1,10 @@
-import {combineReducers} from 'redux';
-import linkGroups from './linkGroups';
+import { combineReducers } from 'redux'
+import footerIconsReducer from './footerIconsReducer'
+import formsStatusReducer from './formsStatusReducer'
+import currBodyInfoReducer from './currBodyInfoReducer'
 
 export default combineReducers({
-    linkGroups,
-});
+    footerIconsReducer,
+    formsStatusReducer,
+    currBodyInfoReducer,
+})

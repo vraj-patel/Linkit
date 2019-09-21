@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
+import {
+    setFooterIconStatus, 
+    openAddGroupForm, 
+    openAddLinkForm
+} from '../../actions';
 
-
-export default class Footer extends Component {
+class Footer extends Component {
 
     state = {
         isEditActive: false,
@@ -12,20 +17,39 @@ export default class Footer extends Component {
 
     checkActive(icon) {
         if (icon === 'edit') {
-            if (this.state.isEditActive) return styles.footerButton_Active;
+            if (this.props.isEditActive) return styles.footerButton_Active;
         } else if (icon === 'add') {
-            if (this.state.isAddActive) return styles.footerButton_Active;
+            if (this.props.isAddActive) return styles.footerButton_Active;
         } else if (icon === 'sort') {
-            if (this.state.isSortActive) return styles.footerButton_Active;
+            if (this.props.isSortActive) return styles.footerButton_Active;
         }
     }
 
-    setActiveIcon(icon) {
-        this.setState({
-            isEditActive: icon === 'edit' ? true : false,
-            isAddActive: icon === 'add' ? true : false,
-            isSortActive: icon === 'sort' ? true : false,
-        });
+    editPressed() {
+        if (this.props.isEditActive) 
+            this.props.setFooterIconStatus(false, false, false);
+        else 
+            this.props.setFooterIconStatus(true, false, false);
+    }
+
+    addPressed() {
+        if (this.props.isAddActive) 
+            this.props.setFooterIconStatus(false, false, false);
+        else 
+            this.props.setFooterIconStatus(false, true, false);
+        
+        if (this.props.groupCardsDisplayed) 
+            this.props.openAddGroupForm();
+        else 
+            this.props.openAddLinkForm();
+        
+    }
+
+    sortPressed() {
+        if (this.props.isSortActive) 
+            this.props.setFooterIconStatus(false, false, false);
+        else 
+            this.props.setFooterIconStatus(false, false, true);
     }
 
     render() {
@@ -35,7 +59,7 @@ export default class Footer extends Component {
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity 
                             style={[styles.footerButton, this.checkActive('edit')]}
-                            onPress={() => this.setActiveIcon('edit')}
+                            onPress={() => this.editPressed()}
                         >
                             <Image
                                 style={styles.icon}
@@ -45,7 +69,7 @@ export default class Footer extends Component {
 
                         <TouchableOpacity 
                             style={[styles.footerButton, this.checkActive('add')]}
-                            onPress={() => this.setActiveIcon('add')}
+                            onPress={() => this.addPressed()}
                         >
                             {/* <Text style={styles.footerButtonText}>Disabled</Text> */}
                             <Image
@@ -56,7 +80,7 @@ export default class Footer extends Component {
 
                         <TouchableOpacity 
                             style={[styles.footerButton, this.checkActive('sort')]}
-                            onPress={() => this.setActiveIcon('sort')}
+                            onPress={() => this.sortPressed()}
                         >
                             {/* <Text style={styles.footerButtonText}>Archived</Text> */}
                             <Image
@@ -111,3 +135,22 @@ const styles = StyleSheet.create({
     }
 
 });
+
+function mapStateToProps(state) {
+    return {
+        isEditActive: state.footerIconsReducer.isEditActive,
+        isAddActive: state.footerIconsReducer.isAddActive,
+        isSortActive: state.footerIconsReducer.isSortActive,
+        groupCardsDisplayed: state.currBodyInfoReducer.groupCardsDisplayed,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setFooterIconStatus: (isEditActive, isAddActive, isSortActive) => dispatch(setFooterIconStatus(isEditActive, isAddActive, isSortActive)),
+        openAddGroupForm: () => dispatch(openAddGroupForm()),
+        openAddLinkForm: () => dispatch(openAddLinkForm()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer)

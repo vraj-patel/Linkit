@@ -2,15 +2,17 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text, TextInput, Image, Modal, Dimensions} from 'react-native';
 
 import { Input, Button } from 'react-native-elements';
-
+import { connect } from 'react-redux'
 import ColourPicker from './ColourPicker';
+import {closeForms} from '../../actions'
 
-export default class LoginForm extends Component {
+class NewLinkGroupForm extends Component {
     render() {
         return (
             <Modal
                 transparent
                 animationType="slide"
+                visible= {this.props.isAddGroupFormOpen}
             >
                 <View style={styles.modalContainer}>
                     <View style={styles.formContainer}>
@@ -39,6 +41,7 @@ export default class LoginForm extends Component {
                                 buttonStyle={styles.button}
                                 containerStyle={styles.buttonContainer}
                                 title= 'Cancel'
+                                onPress={() => this.props.closeForms()}
                             />
                         </View>
                             
@@ -108,3 +111,17 @@ const styles = StyleSheet.create({
     }
     
 });
+
+function mapStateToProps(state) {
+    return {
+        isAddGroupFormOpen: state.formsStatusReducer.isAddGroupFormOpen
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        closeForms: () => dispatch(closeForms()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewLinkGroupForm);

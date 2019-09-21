@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, TextInput, Image, Modal, Dimensions} from 'react-native';
-
+import { connect } from 'react-redux';
 import { Input, Button } from 'react-native-elements';
+import { closeForms } from '../actions'
 
-export default class LoginForm extends Component {
+class NewLinkForm extends Component {
     render() {
         return (
             <Modal
                 transparent
                 animationType="slide"
+                visible={this.props.isAddLinkFormOpen}
             >
                 <View style={styles.modalContainer}>
                     <View style={styles.formContainer}>
@@ -38,6 +40,7 @@ export default class LoginForm extends Component {
                                 buttonStyle={styles.button}
                                 containerStyle={styles.buttonContainer}
                                 title= 'Cancel'
+                                onPress={() => this.props.closeForms()}
                             />
                         </View>
                             
@@ -100,3 +103,17 @@ const styles = StyleSheet.create({
     }
     
 });
+
+function mapStateToProps(state) {
+    return {
+        isAddLinkFormOpen: state.formsStatusReducer.isAddLinkFormOpen
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        closeForms: () => dispatch(closeForms()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewLinkForm);

@@ -23,7 +23,8 @@ export default class Home extends Component {
 
                     <View style={styles.body}>
                         <Body />
-                        {/* <NewLinkGroupForm /> */}
+                        <NewLinkGroupForm />
+                        <NewLinkForm />
                     </View>
 
                     <View style={styles.footer}>
