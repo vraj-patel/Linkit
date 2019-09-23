@@ -2,3 +2,5 @@ export const SET_FOOTER_ICONS_STATUS = 'SET_FOOTER_ICONS_STATUS';
 export const OPEN_ADD_GROUP_FORM = 'OPEN_ADD_GROUP_FORM';
 export const CLOSE_FORMS = 'CLOSE_FORMS';
 export const OPEN_ADD_LINK_FORM = 'OPEN_ADD_LINK_FORM';
+export const ADD_GROUP = 'ADD_GROUP';
+export const ADD_LINK = 'ADD_LINK';

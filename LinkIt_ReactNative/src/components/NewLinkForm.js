@@ -2,9 +2,30 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text, TextInput, Image, Modal, Dimensions} from 'react-native';
 import { connect } from 'react-redux';
 import { Input, Button } from 'react-native-elements';
-import { closeForms } from '../actions'
+import { closeForms, setFooterIconStatus, addLink } from '../actions'
 
 class NewLinkForm extends Component {
+
+    state = {
+        linkName: '',
+        linkValue: ''
+    }
+    
+    cancelPressed() {
+        this.props.closeForms();
+        this.props.setFooterIconStatus(false, false, false);
+
+    }
+
+    addPressed() {
+        const link = {
+            name: this.state.linkName,
+            value: this.state.linkValue
+        }
+        this.props.addLink(link);
+        this.cancelPressed();
+    }
+
     render() {
         return (
             <Modal
@@ -19,11 +40,13 @@ class NewLinkForm extends Component {
                                 containerStyle={styles.linkNameInput}
                                 placeholder='Link Name'
                                 label='Enter Link Name'
+                                onChangeText={(text) => this.setState({linkName: text})}
                             />
                             <Input 
                                 containerStyle={styles.linkInput}
                                 placeholder='Link'
                                 label="Paste Your Link"
+                                onChangeText={(text) => this.setState({linkValue: text})}
                             />
 
                             <Text style={styles.hintText}>Hint: To copy link, press the copy icon within the link card. To open, press link name.</Text>
@@ -40,12 +63,9 @@ class NewLinkForm extends Component {
                                 buttonStyle={styles.button}
                                 containerStyle={styles.buttonContainer}
                                 title= 'Cancel'
-                                onPress={() => this.props.closeForms()}
+                                onPress={() => this.cancelPressed()}
                             />
-                        </View>
-                            
-                        
-                            
+                        </View>   
                     </View>
                 </View>
             </Modal>
@@ -113,6 +133,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         closeForms: () => dispatch(closeForms()),
+        setFooterIconStatus: (isEditActive, isAddActive, isSortActive) => dispatch(setFooterIconStatus(isEditActive, isAddActive, isSortActive)),
+        addLink: (link) => dispatch(addLink(link)),
     }
 }
 

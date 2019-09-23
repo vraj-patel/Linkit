@@ -1,5 +1,6 @@
 const initialState = {
-    groupCardsDisplayed: false
+    groupCardsDisplayed: true,
+    selectedGroupId: ''
 }
 
   const currBodyInfoReducer = (state = initialState, action) => {

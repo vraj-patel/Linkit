@@ -4,9 +4,35 @@ import {StyleSheet, View, Text, TextInput, Image, Modal, Dimensions} from 'react
 import { Input, Button } from 'react-native-elements';
 import { connect } from 'react-redux'
 import ColourPicker from './ColourPicker';
-import {closeForms} from '../../actions'
+import {closeForms, setFooterIconStatus, addGroup} from '../../actions'
 
 class NewLinkGroupForm extends Component {
+
+    state = {
+        groupName: null,
+        color: null,
+    }
+
+
+    cancelPressed() {
+        this.props.closeForms();
+        this.props.setFooterIconStatus(false, false, false);
+    }
+
+    addPressed() {
+        const group = {
+            name: this.state.groupName,
+            color: this.state.color,
+            links: []
+        }
+        this.props.addGroup(group);
+        this.cancelPressed();
+    }
+
+    setColor(color) {
+        this.setState({color: color});
+    }
+
     render() {
         return (
             <Modal
@@ -22,10 +48,11 @@ class NewLinkGroupForm extends Component {
                                 placeholder='Group Name'
                                 label='Enter Group Name'
                                 labelStyle={{color: 'gray'}}
+                                onChangeText={(text) => this.setState({groupName: text})}
                             />
                             <View style={styles.colourPickerContainer}>
                                 <Text style={styles.chooseColorText}>Choose Group Colour</Text>
-                                <ColourPicker />
+                                <ColourPicker getSelectedColor={this.setColor.bind(this)}/>
                             </View>
                             
                         </View>
@@ -35,13 +62,14 @@ class NewLinkGroupForm extends Component {
                                 buttonStyle={styles.button}
                                 containerStyle={styles.buttonContainer}
                                 title= 'Add Group'
+                                onPress={() => this.addPressed()}
                             />
 
                             <Button 
                                 buttonStyle={styles.button}
                                 containerStyle={styles.buttonContainer}
                                 title= 'Cancel'
-                                onPress={() => this.props.closeForms()}
+                                onPress={() => this.cancelPressed()}
                             />
                         </View>
                             
@@ -114,13 +142,16 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
     return {
-        isAddGroupFormOpen: state.formsStatusReducer.isAddGroupFormOpen
+        isAddGroupFormOpen: state.formsStatusReducer.isAddGroupFormOpen,
+        
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         closeForms: () => dispatch(closeForms()),
+        setFooterIconStatus: (isEditActive, isAddActive, isSortActive) => dispatch(setFooterIconStatus(isEditActive, isAddActive, isSortActive)),
+        addGroup: (group) => dispatch(addGroup(group))
     }
 }
 

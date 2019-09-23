@@ -6,9 +6,9 @@ export default class LinkGroupCard extends Component {
     render() {
         return(
             <TouchableOpacity>
-            <View style={styles.container}>
+            <View style={[styles.container, {backgroundColor: this.props.groupColor}]}>
                 <View style={styles.leftContent}>
-                    <Text style={styles.title}>Some Group Name</Text>
+                    <Text style={styles.title}>{this.props.groupName}</Text>
                 </View>
 
                 <View style={styles.rightContent}>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     container: {
         height: 100,
         marginBottom: 15,
-        backgroundColor: '#6c5ce7',
+        //backgroundColor: '#6c5ce7',
         flexDirection: 'row'
     },
     leftContent: {
